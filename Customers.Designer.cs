@@ -31,21 +31,6 @@ namespace AdvInCRUD
         {
             this.components = new System.ComponentModel.Container();
             this.customergrid = new System.Windows.Forms.DataGridView();
-            this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameStyleDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.suffixDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salesPersonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordHashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordSaltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rowguidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modifiedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.adventureWorksLT2017DataSet = new AdvInCRUD.AdventureWorksLT2017DataSet();
             this.FirstNamelbl = new System.Windows.Forms.Label();
@@ -75,6 +60,21 @@ namespace AdvInCRUD
             this.customerTableAdapter = new AdvInCRUD.AdventureWorksLT2017DataSetTableAdapters.CustomerTableAdapter();
             this.SalesPersontxtbox = new System.Windows.Forms.TextBox();
             this.SalesPersonlbl = new System.Windows.Forms.Label();
+            this.txtid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameStyleDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txttitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtfirst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtmiddle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtlast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtsuffix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtcompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtsalesperson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtphone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordHashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordSaltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rowguidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modifiedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.customergrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adventureWorksLT2017DataSet)).BeginInit();
@@ -85,17 +85,17 @@ namespace AdvInCRUD
             this.customergrid.AutoGenerateColumns = false;
             this.customergrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customergrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.customerIDDataGridViewTextBoxColumn,
+            this.txtid,
             this.nameStyleDataGridViewCheckBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.firstNameDataGridViewTextBoxColumn,
-            this.middleNameDataGridViewTextBoxColumn,
-            this.lastNameDataGridViewTextBoxColumn,
-            this.suffixDataGridViewTextBoxColumn,
-            this.companyNameDataGridViewTextBoxColumn,
-            this.salesPersonDataGridViewTextBoxColumn,
-            this.emailAddressDataGridViewTextBoxColumn,
-            this.phoneDataGridViewTextBoxColumn,
+            this.txttitle,
+            this.txtfirst,
+            this.txtmiddle,
+            this.txtlast,
+            this.txtsuffix,
+            this.txtcompany,
+            this.txtsalesperson,
+            this.txtemail,
+            this.txtphone,
             this.passwordHashDataGridViewTextBoxColumn,
             this.passwordSaltDataGridViewTextBoxColumn,
             this.rowguidDataGridViewTextBoxColumn,
@@ -109,132 +109,7 @@ namespace AdvInCRUD
             this.customergrid.Size = new System.Drawing.Size(976, 381);
             this.customergrid.TabIndex = 0;
             this.customergrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.customergrid_CellValueChanged);
-            // 
-            // customerIDDataGridViewTextBoxColumn
-            // 
-            this.customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn.HeaderText = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
-            this.customerIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customerIDDataGridViewTextBoxColumn.Visible = false;
-            this.customerIDDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // nameStyleDataGridViewCheckBoxColumn
-            // 
-            this.nameStyleDataGridViewCheckBoxColumn.DataPropertyName = "NameStyle";
-            this.nameStyleDataGridViewCheckBoxColumn.HeaderText = "NameStyle";
-            this.nameStyleDataGridViewCheckBoxColumn.MinimumWidth = 10;
-            this.nameStyleDataGridViewCheckBoxColumn.Name = "nameStyleDataGridViewCheckBoxColumn";
-            this.nameStyleDataGridViewCheckBoxColumn.Visible = false;
-            this.nameStyleDataGridViewCheckBoxColumn.Width = 200;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // middleNameDataGridViewTextBoxColumn
-            // 
-            this.middleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName";
-            this.middleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName";
-            this.middleNameDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.middleNameDataGridViewTextBoxColumn.Name = "middleNameDataGridViewTextBoxColumn";
-            this.middleNameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // suffixDataGridViewTextBoxColumn
-            // 
-            this.suffixDataGridViewTextBoxColumn.DataPropertyName = "Suffix";
-            this.suffixDataGridViewTextBoxColumn.HeaderText = "Suffix";
-            this.suffixDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.suffixDataGridViewTextBoxColumn.Name = "suffixDataGridViewTextBoxColumn";
-            this.suffixDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // companyNameDataGridViewTextBoxColumn
-            // 
-            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.HeaderText = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
-            this.companyNameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // salesPersonDataGridViewTextBoxColumn
-            // 
-            this.salesPersonDataGridViewTextBoxColumn.DataPropertyName = "SalesPerson";
-            this.salesPersonDataGridViewTextBoxColumn.HeaderText = "SalesPerson";
-            this.salesPersonDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.salesPersonDataGridViewTextBoxColumn.Name = "salesPersonDataGridViewTextBoxColumn";
-            this.salesPersonDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // emailAddressDataGridViewTextBoxColumn
-            // 
-            this.emailAddressDataGridViewTextBoxColumn.DataPropertyName = "EmailAddress";
-            this.emailAddressDataGridViewTextBoxColumn.HeaderText = "EmailAddress";
-            this.emailAddressDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.emailAddressDataGridViewTextBoxColumn.Name = "emailAddressDataGridViewTextBoxColumn";
-            this.emailAddressDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // passwordHashDataGridViewTextBoxColumn
-            // 
-            this.passwordHashDataGridViewTextBoxColumn.DataPropertyName = "PasswordHash";
-            this.passwordHashDataGridViewTextBoxColumn.HeaderText = "PasswordHash";
-            this.passwordHashDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.passwordHashDataGridViewTextBoxColumn.Name = "passwordHashDataGridViewTextBoxColumn";
-            this.passwordHashDataGridViewTextBoxColumn.Visible = false;
-            this.passwordHashDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // passwordSaltDataGridViewTextBoxColumn
-            // 
-            this.passwordSaltDataGridViewTextBoxColumn.DataPropertyName = "PasswordSalt";
-            this.passwordSaltDataGridViewTextBoxColumn.HeaderText = "PasswordSalt";
-            this.passwordSaltDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.passwordSaltDataGridViewTextBoxColumn.Name = "passwordSaltDataGridViewTextBoxColumn";
-            this.passwordSaltDataGridViewTextBoxColumn.Visible = false;
-            this.passwordSaltDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // rowguidDataGridViewTextBoxColumn
-            // 
-            this.rowguidDataGridViewTextBoxColumn.DataPropertyName = "rowguid";
-            this.rowguidDataGridViewTextBoxColumn.HeaderText = "rowguid";
-            this.rowguidDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.rowguidDataGridViewTextBoxColumn.Name = "rowguidDataGridViewTextBoxColumn";
-            this.rowguidDataGridViewTextBoxColumn.Visible = false;
-            this.rowguidDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // modifiedDateDataGridViewTextBoxColumn
-            // 
-            this.modifiedDateDataGridViewTextBoxColumn.DataPropertyName = "ModifiedDate";
-            this.modifiedDateDataGridViewTextBoxColumn.HeaderText = "ModifiedDate";
-            this.modifiedDateDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.modifiedDateDataGridViewTextBoxColumn.Name = "modifiedDateDataGridViewTextBoxColumn";
-            this.modifiedDateDataGridViewTextBoxColumn.Width = 200;
+            this.customergrid.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.customergrid_UserDeletingRow);
             // 
             // customerBindingSource
             // 
@@ -303,7 +178,7 @@ namespace AdvInCRUD
             // btnAdd
             // 
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdd.Location = new System.Drawing.Point(275, 397);
+            this.btnAdd.Location = new System.Drawing.Point(247, 540);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(58, 22);
@@ -315,7 +190,7 @@ namespace AdvInCRUD
             // btnDelete
             // 
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDelete.Location = new System.Drawing.Point(349, 397);
+            this.btnDelete.Location = new System.Drawing.Point(247, 514);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(58, 22);
@@ -326,10 +201,10 @@ namespace AdvInCRUD
             // refreshbtn
             // 
             this.refreshbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.refreshbtn.Location = new System.Drawing.Point(425, 397);
+            this.refreshbtn.Location = new System.Drawing.Point(444, 397);
             this.refreshbtn.Margin = new System.Windows.Forms.Padding(2);
             this.refreshbtn.Name = "refreshbtn";
-            this.refreshbtn.Size = new System.Drawing.Size(58, 22);
+            this.refreshbtn.Size = new System.Drawing.Size(83, 22);
             this.refreshbtn.TabIndex = 9;
             this.refreshbtn.Text = "Refresh";
             this.refreshbtn.UseVisualStyleBackColor = true;
@@ -501,6 +376,132 @@ namespace AdvInCRUD
             this.SalesPersonlbl.TabIndex = 25;
             this.SalesPersonlbl.Text = "Sales Person";
             // 
+            // txtid
+            // 
+            this.txtid.DataPropertyName = "CustomerID";
+            this.txtid.HeaderText = "CustomerID";
+            this.txtid.MinimumWidth = 10;
+            this.txtid.Name = "txtid";
+            this.txtid.ReadOnly = true;
+            this.txtid.Visible = false;
+            this.txtid.Width = 200;
+            // 
+            // nameStyleDataGridViewCheckBoxColumn
+            // 
+            this.nameStyleDataGridViewCheckBoxColumn.DataPropertyName = "NameStyle";
+            this.nameStyleDataGridViewCheckBoxColumn.HeaderText = "NameStyle";
+            this.nameStyleDataGridViewCheckBoxColumn.MinimumWidth = 10;
+            this.nameStyleDataGridViewCheckBoxColumn.Name = "nameStyleDataGridViewCheckBoxColumn";
+            this.nameStyleDataGridViewCheckBoxColumn.Visible = false;
+            this.nameStyleDataGridViewCheckBoxColumn.Width = 200;
+            // 
+            // txttitle
+            // 
+            this.txttitle.DataPropertyName = "Title";
+            this.txttitle.HeaderText = "Title";
+            this.txttitle.MinimumWidth = 10;
+            this.txttitle.Name = "txttitle";
+            this.txttitle.Width = 200;
+            // 
+            // txtfirst
+            // 
+            this.txtfirst.DataPropertyName = "FirstName";
+            this.txtfirst.HeaderText = "FirstName";
+            this.txtfirst.MinimumWidth = 10;
+            this.txtfirst.Name = "txtfirst";
+            this.txtfirst.Width = 200;
+            // 
+            // txtmiddle
+            // 
+            this.txtmiddle.DataPropertyName = "MiddleName";
+            this.txtmiddle.HeaderText = "MiddleName";
+            this.txtmiddle.MinimumWidth = 10;
+            this.txtmiddle.Name = "txtmiddle";
+            this.txtmiddle.Width = 200;
+            // 
+            // txtlast
+            // 
+            this.txtlast.DataPropertyName = "LastName";
+            this.txtlast.HeaderText = "LastName";
+            this.txtlast.MinimumWidth = 10;
+            this.txtlast.Name = "txtlast";
+            this.txtlast.Width = 200;
+            // 
+            // txtsuffix
+            // 
+            this.txtsuffix.DataPropertyName = "Suffix";
+            this.txtsuffix.HeaderText = "Suffix";
+            this.txtsuffix.MinimumWidth = 10;
+            this.txtsuffix.Name = "txtsuffix";
+            this.txtsuffix.Width = 200;
+            // 
+            // txtcompany
+            // 
+            this.txtcompany.DataPropertyName = "CompanyName";
+            this.txtcompany.HeaderText = "CompanyName";
+            this.txtcompany.MinimumWidth = 10;
+            this.txtcompany.Name = "txtcompany";
+            this.txtcompany.Width = 200;
+            // 
+            // txtsalesperson
+            // 
+            this.txtsalesperson.DataPropertyName = "SalesPerson";
+            this.txtsalesperson.HeaderText = "SalesPerson";
+            this.txtsalesperson.MinimumWidth = 10;
+            this.txtsalesperson.Name = "txtsalesperson";
+            this.txtsalesperson.Width = 200;
+            // 
+            // txtemail
+            // 
+            this.txtemail.DataPropertyName = "EmailAddress";
+            this.txtemail.HeaderText = "EmailAddress";
+            this.txtemail.MinimumWidth = 10;
+            this.txtemail.Name = "txtemail";
+            this.txtemail.Width = 200;
+            // 
+            // txtphone
+            // 
+            this.txtphone.DataPropertyName = "Phone";
+            this.txtphone.HeaderText = "Phone";
+            this.txtphone.MinimumWidth = 10;
+            this.txtphone.Name = "txtphone";
+            this.txtphone.Width = 200;
+            // 
+            // passwordHashDataGridViewTextBoxColumn
+            // 
+            this.passwordHashDataGridViewTextBoxColumn.DataPropertyName = "PasswordHash";
+            this.passwordHashDataGridViewTextBoxColumn.HeaderText = "PasswordHash";
+            this.passwordHashDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.passwordHashDataGridViewTextBoxColumn.Name = "passwordHashDataGridViewTextBoxColumn";
+            this.passwordHashDataGridViewTextBoxColumn.Visible = false;
+            this.passwordHashDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // passwordSaltDataGridViewTextBoxColumn
+            // 
+            this.passwordSaltDataGridViewTextBoxColumn.DataPropertyName = "PasswordSalt";
+            this.passwordSaltDataGridViewTextBoxColumn.HeaderText = "PasswordSalt";
+            this.passwordSaltDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.passwordSaltDataGridViewTextBoxColumn.Name = "passwordSaltDataGridViewTextBoxColumn";
+            this.passwordSaltDataGridViewTextBoxColumn.Visible = false;
+            this.passwordSaltDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // rowguidDataGridViewTextBoxColumn
+            // 
+            this.rowguidDataGridViewTextBoxColumn.DataPropertyName = "rowguid";
+            this.rowguidDataGridViewTextBoxColumn.HeaderText = "rowguid";
+            this.rowguidDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.rowguidDataGridViewTextBoxColumn.Name = "rowguidDataGridViewTextBoxColumn";
+            this.rowguidDataGridViewTextBoxColumn.Visible = false;
+            this.rowguidDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // modifiedDateDataGridViewTextBoxColumn
+            // 
+            this.modifiedDateDataGridViewTextBoxColumn.DataPropertyName = "ModifiedDate";
+            this.modifiedDateDataGridViewTextBoxColumn.HeaderText = "ModifiedDate";
+            this.modifiedDateDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.modifiedDateDataGridViewTextBoxColumn.Name = "modifiedDateDataGridViewTextBoxColumn";
+            this.modifiedDateDataGridViewTextBoxColumn.Width = 200;
+            // 
             // Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -575,23 +576,23 @@ namespace AdvInCRUD
         private AdventureWorksLT2017DataSet adventureWorksLT2017DataSet;
         private System.Windows.Forms.BindingSource customerBindingSource;
         private AdventureWorksLT2017DataSetTableAdapters.CustomerTableAdapter customerTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox SalesPersontxtbox;
+        private System.Windows.Forms.Label SalesPersonlbl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtid;
         private System.Windows.Forms.DataGridViewCheckBoxColumn nameStyleDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn middleNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn suffixDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salesPersonDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailAddressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txttitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtfirst;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtmiddle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtlast;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtsuffix;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtcompany;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtsalesperson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtemail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtphone;
         private System.Windows.Forms.DataGridViewTextBoxColumn passwordHashDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn passwordSaltDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rowguidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox SalesPersontxtbox;
-        private System.Windows.Forms.Label SalesPersonlbl;
     }
 }
 

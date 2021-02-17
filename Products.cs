@@ -21,10 +21,9 @@ namespace AdvInCRUD
 
         private void Products_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'adventureWorksLT2017DataSet.SalesOrderDetail' table. You can move, or remove it, as needed.
-            this.salesOrderDetailTableAdapter.Fill(this.adventureWorksLT2017DataSet.SalesOrderDetail);
-            // TODO: This line of code loads data into the 'adventureWorksLT2017DataSet.Product' table. You can move, or remove it, as needed.
-            this.productTableAdapter.Fill(this.adventureWorksLT2017DataSet.Product);
+            //initial load
+            //this.productTableAdapter.Fill(this.adventureWorksLT2017DataSet.Product);
+            getData();
 
         }
 
