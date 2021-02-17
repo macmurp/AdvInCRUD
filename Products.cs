@@ -32,7 +32,7 @@ namespace AdvInCRUD
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString()))
             {
-                SqlCommand cmd = new SqlCommand("getAllCustomers", conn);
+                SqlCommand cmd = new SqlCommand("getAllProducts", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
                 SqlDataAdapter sqld = new SqlDataAdapter(cmd);
@@ -42,10 +42,22 @@ namespace AdvInCRUD
                 conn.Close();
             }
         }
-
+        private void getDataSearch()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString()))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SearchProducts", conn);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@Name", searchtxtbox.Text.Trim());
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                productgrid.DataSource = dt;
+                conn.Close();
+            }
+        }
         private void searchbtn_Click(object sender, EventArgs e)
         {
-
+            getDataSearch();
         }
 
         private void gotocustomersbtn_Click(object sender, EventArgs e)

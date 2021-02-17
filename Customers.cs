@@ -19,10 +19,18 @@ namespace AdvInCRUD
 
         }
 
+        private void Customers_Load(object sender, EventArgs e)
+        {
+            // load table initial
+            this.customerTableAdapter.Fill(this.adventureWorksLT2017DataSet.Customer);
+
+        }
+
         private void getData()
         {
             using(SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString()))
             {
+                //reload on command
                 SqlCommand cmd = new SqlCommand("getAllCustomers", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
@@ -31,44 +39,6 @@ namespace AdvInCRUD
                 sqld.Fill(dt);
                 customergrid.DataSource = dt;
                 conn.Close();
-            }
-        }
-
-        private void customergrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString()))
-                {
-
-                    SqlCommand acmd = new SqlCommand("UpdateCustomer", conn);
-                    acmd.CommandType = CommandType.StoredProcedure;
-                    acmd.Parameters.AddWithValue("@mode", "Add");
-                    acmd.Parameters.AddWithValue("@ContactID", 0);
-                    acmd.Parameters.AddWithValue("@Title", titletxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@LastName", lasttxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@MiddleName", middletxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@FirstName", firsttxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@Suffix", suffixtxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@CompanyName", companytxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@EmailAddress", emailtxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@Phone", phonetxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@PasswordHash", 0);
-                    acmd.Parameters.AddWithValue("@PasswordSalt", 0);
-                    conn.Close();
-                    
-                }
-                getData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -109,6 +79,51 @@ namespace AdvInCRUD
             var p = new Products();
             p.Show();
             this.Hide();
+        }
+
+        private void customergrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if(customergrid.CurrentRow != null)
+            {
+                using(SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString()))
+                {
+                    conn.Open();
+                    DataGridViewRow drow = customergrid.CurrentRow;
+                }
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString()))
+                {
+                    SqlCommand acmd = new SqlCommand("AddCustomer", conn);
+                    acmd.CommandType = CommandType.StoredProcedure;
+                    acmd.Parameters.AddWithValue("@CustomerID", 0);
+                    acmd.Parameters.AddWithValue("@Title", titletxtbox.Text.Trim());
+                    acmd.Parameters.AddWithValue("@FirstName", firsttxtbox.Text.Trim());
+                    acmd.Parameters.AddWithValue("@LastName", lasttxtbox.Text.Trim());
+                    acmd.Parameters.AddWithValue("@MiddleName", middletxtbox.Text.Trim());
+                    acmd.Parameters.AddWithValue("@Suffix", suffixtxtbox.Text.Trim());
+                    acmd.Parameters.AddWithValue("@CompanyName", companytxtbox.Text.Trim());
+                    acmd.Parameters.AddWithValue("@EmailAddress", emailtxtbox.Text.Trim());
+                    acmd.Parameters.AddWithValue("@Phone", phonetxtbox.Text.Trim());
+                    acmd.Parameters.AddWithValue("@SalesPerson", SalesPersontxtbox.Text.Trim());
+                    acmd.Parameters.AddWithValue("@PasswordHash", 0);
+                    acmd.Parameters.AddWithValue("@PasswordSalt", 0);
+                    conn.Open();
+                    acmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Added a new customer!");
+                }
+                getData();
+            }
+            catch (Exception ex)
+            {         
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
     }
 }
