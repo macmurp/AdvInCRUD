@@ -21,8 +21,8 @@ namespace AdvInCRUD
 
         private void Customers_Load(object sender, EventArgs e)
         {
+            //this.getAllCustomersTableAdapter.Fill(this.adventureWorksLT2017DataSet1.getAllCustomers);
             // load table initial
-            //this.customerTableAdapter.Fill(this.adventureWorksLT2017DataSet.Customer);
             getData();
 
         }
@@ -95,12 +95,14 @@ namespace AdvInCRUD
                             //make a new ID instead
                             //logic inside the stored procedure will see this and know it is an insert
                             cmd.Parameters.AddWithValue("@CustomerID", 0);
+                            cmd.Parameters.AddWithValue("@AddressID", 0);
                         }
                         else
                         {
                             //if editing a row, id of current row will be used
                             //logic inside the stored procedure will see this and know it is an update
                             cmd.Parameters.AddWithValue("@CustomerID", Convert.ToInt32(drow.Cells["txtid"].Value));
+                            cmd.Parameters.AddWithValue("@AddressID", Convert.ToInt32(drow.Cells["txtaddressid"].Value));
 
                         }
                         //if value of cell is null, pass empty string
@@ -115,6 +117,15 @@ namespace AdvInCRUD
                         cmd.Parameters.AddWithValue("@SalesPerson", drow.Cells["txtsalesperson"].Value == DBNull.Value ? "" : drow.Cells["txtsalesperson"].Value);
                         cmd.Parameters.AddWithValue("@PasswordHash", 0);
                         cmd.Parameters.AddWithValue("@PasswordSalt", 0);
+
+                        cmd.Parameters.AddWithValue("@AddressType", drow.Cells["txtaddresstype"].Value == DBNull.Value ? "" : drow.Cells["txtaddresstype"].Value);
+                        cmd.Parameters.AddWithValue("@AddressLine1", drow.Cells["txtaddressline1"].Value == DBNull.Value ? "" : drow.Cells["txtaddressline1"].Value);
+                        cmd.Parameters.AddWithValue("@AddressLine2", drow.Cells["txtaddressline2"].Value == DBNull.Value ? "" : drow.Cells["txtaddressline2"].Value);
+                        cmd.Parameters.AddWithValue("@City", drow.Cells["txtcity"].Value == DBNull.Value ? "" : drow.Cells["txtcity"].Value);
+                        cmd.Parameters.AddWithValue("@StateProvince", drow.Cells["txtstateprovince"].Value == DBNull.Value ? "" : drow.Cells["txtstateprovince"].Value);
+                        cmd.Parameters.AddWithValue("@CountryRegion", drow.Cells["txtcountryregion"].Value == DBNull.Value ? "" : drow.Cells["txtcountryregion"].Value);
+                        cmd.Parameters.AddWithValue("@PostalCode", drow.Cells["txtpostalcode"].Value == DBNull.Value ? "" : drow.Cells["txtpostalcode"].Value);
+
                         cmd.ExecuteNonQuery();
                     }
                     //need to press refresh to see results

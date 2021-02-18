@@ -31,6 +31,8 @@ namespace AdvInCRUD
         {
             this.components = new System.ComponentModel.Container();
             this.customergrid = new System.Windows.Forms.DataGridView();
+            this.getAllCustomersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.adventureWorksLT2017DataSet1 = new AdvInCRUD.AdventureWorksLT2017DataSet1();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.adventureWorksLT2017DataSet = new AdvInCRUD.AdventureWorksLT2017DataSet();
             this.FirstNamelbl = new System.Windows.Forms.Label();
@@ -40,7 +42,6 @@ namespace AdvInCRUD
             this.middletxtbox = new System.Windows.Forms.TextBox();
             this.MiddleNamelbl = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.refreshbtn = new System.Windows.Forms.Button();
             this.companytxtbox = new System.Windows.Forms.TextBox();
             this.Companylbl = new System.Windows.Forms.Label();
@@ -55,13 +56,12 @@ namespace AdvInCRUD
             this.searchtxtbox = new System.Windows.Forms.TextBox();
             this.searchbtn = new System.Windows.Forms.Button();
             this.gotoproductbtn = new System.Windows.Forms.Button();
-            this.gotocustomeraddressbtn = new System.Windows.Forms.Button();
-            this.gotoCustomerSalesbtn = new System.Windows.Forms.Button();
             this.customerTableAdapter = new AdvInCRUD.AdventureWorksLT2017DataSetTableAdapters.CustomerTableAdapter();
             this.SalesPersontxtbox = new System.Windows.Forms.TextBox();
             this.SalesPersonlbl = new System.Windows.Forms.Label();
+            this.instructionlbl = new System.Windows.Forms.Label();
+            this.getAllCustomersTableAdapter = new AdvInCRUD.AdventureWorksLT2017DataSet1TableAdapters.getAllCustomersTableAdapter();
             this.txtid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameStyleDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txttitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtfirst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtmiddle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,11 +71,18 @@ namespace AdvInCRUD
             this.txtsalesperson = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtphone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordHashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordSaltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rowguidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtaddressid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtaddresstype = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtaddressline1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtaddressline2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtcity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtstateprovince = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtcountryregion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtpostalcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.customergrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getAllCustomersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adventureWorksLT2017DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adventureWorksLT2017DataSet)).BeginInit();
             this.SuspendLayout();
@@ -86,7 +93,6 @@ namespace AdvInCRUD
             this.customergrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customergrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.txtid,
-            this.nameStyleDataGridViewCheckBoxColumn,
             this.txttitle,
             this.txtfirst,
             this.txtmiddle,
@@ -96,20 +102,35 @@ namespace AdvInCRUD
             this.txtsalesperson,
             this.txtemail,
             this.txtphone,
-            this.passwordHashDataGridViewTextBoxColumn,
-            this.passwordSaltDataGridViewTextBoxColumn,
-            this.rowguidDataGridViewTextBoxColumn,
-            this.modifiedDateDataGridViewTextBoxColumn});
-            this.customergrid.DataSource = this.customerBindingSource;
+            this.modifiedDateDataGridViewTextBoxColumn,
+            this.txtaddressid,
+            this.txtaddresstype,
+            this.txtaddressline1,
+            this.txtaddressline2,
+            this.txtcity,
+            this.txtstateprovince,
+            this.txtcountryregion,
+            this.txtpostalcode});
+            this.customergrid.DataSource = this.getAllCustomersBindingSource;
             this.customergrid.Location = new System.Drawing.Point(6, 6);
-            this.customergrid.Margin = new System.Windows.Forms.Padding(2);
+            this.customergrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.customergrid.Name = "customergrid";
             this.customergrid.RowHeadersWidth = 82;
             this.customergrid.RowTemplate.Height = 33;
-            this.customergrid.Size = new System.Drawing.Size(976, 381);
+            this.customergrid.Size = new System.Drawing.Size(990, 381);
             this.customergrid.TabIndex = 0;
             this.customergrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.customergrid_CellValueChanged);
             this.customergrid.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.customergrid_UserDeletingRow);
+            // 
+            // getAllCustomersBindingSource
+            // 
+            this.getAllCustomersBindingSource.DataMember = "getAllCustomers";
+            this.getAllCustomersBindingSource.DataSource = this.adventureWorksLT2017DataSet1;
+            // 
+            // adventureWorksLT2017DataSet1
+            // 
+            this.adventureWorksLT2017DataSet1.DataSetName = "AdventureWorksLT2017DataSet1";
+            this.adventureWorksLT2017DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // customerBindingSource
             // 
@@ -134,15 +155,15 @@ namespace AdvInCRUD
             // firsttxtbox
             // 
             this.firsttxtbox.Location = new System.Drawing.Point(86, 394);
-            this.firsttxtbox.Margin = new System.Windows.Forms.Padding(2);
+            this.firsttxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.firsttxtbox.Name = "firsttxtbox";
             this.firsttxtbox.Size = new System.Drawing.Size(157, 20);
             this.firsttxtbox.TabIndex = 2;
             // 
             // lasttxtbox
             // 
-            this.lasttxtbox.Location = new System.Drawing.Point(86, 429);
-            this.lasttxtbox.Margin = new System.Windows.Forms.Padding(2);
+            this.lasttxtbox.Location = new System.Drawing.Point(86, 430);
+            this.lasttxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lasttxtbox.Name = "lasttxtbox";
             this.lasttxtbox.Size = new System.Drawing.Size(157, 20);
             this.lasttxtbox.TabIndex = 4;
@@ -159,8 +180,8 @@ namespace AdvInCRUD
             // 
             // middletxtbox
             // 
-            this.middletxtbox.Location = new System.Drawing.Point(86, 411);
-            this.middletxtbox.Margin = new System.Windows.Forms.Padding(2);
+            this.middletxtbox.Location = new System.Drawing.Point(86, 412);
+            this.middletxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.middletxtbox.Name = "middletxtbox";
             this.middletxtbox.Size = new System.Drawing.Size(157, 20);
             this.middletxtbox.TabIndex = 6;
@@ -179,7 +200,7 @@ namespace AdvInCRUD
             // 
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAdd.Location = new System.Drawing.Point(247, 540);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(58, 22);
             this.btnAdd.TabIndex = 7;
@@ -187,22 +208,11 @@ namespace AdvInCRUD
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDelete.Location = new System.Drawing.Point(247, 514);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(58, 22);
-            this.btnDelete.TabIndex = 8;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
             // refreshbtn
             // 
             this.refreshbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.refreshbtn.Location = new System.Drawing.Point(444, 397);
-            this.refreshbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.refreshbtn.Location = new System.Drawing.Point(520, 399);
+            this.refreshbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.refreshbtn.Name = "refreshbtn";
             this.refreshbtn.Size = new System.Drawing.Size(83, 22);
             this.refreshbtn.TabIndex = 9;
@@ -213,7 +223,7 @@ namespace AdvInCRUD
             // companytxtbox
             // 
             this.companytxtbox.Location = new System.Drawing.Point(86, 484);
-            this.companytxtbox.Margin = new System.Windows.Forms.Padding(2);
+            this.companytxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.companytxtbox.Name = "companytxtbox";
             this.companytxtbox.Size = new System.Drawing.Size(157, 20);
             this.companytxtbox.TabIndex = 15;
@@ -231,7 +241,7 @@ namespace AdvInCRUD
             // suffixtxtbox
             // 
             this.suffixtxtbox.Location = new System.Drawing.Point(86, 466);
-            this.suffixtxtbox.Margin = new System.Windows.Forms.Padding(2);
+            this.suffixtxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.suffixtxtbox.Name = "suffixtxtbox";
             this.suffixtxtbox.Size = new System.Drawing.Size(157, 20);
             this.suffixtxtbox.TabIndex = 13;
@@ -249,7 +259,7 @@ namespace AdvInCRUD
             // titletxtbox
             // 
             this.titletxtbox.Location = new System.Drawing.Point(86, 448);
-            this.titletxtbox.Margin = new System.Windows.Forms.Padding(2);
+            this.titletxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.titletxtbox.Name = "titletxtbox";
             this.titletxtbox.Size = new System.Drawing.Size(157, 20);
             this.titletxtbox.TabIndex = 11;
@@ -267,7 +277,7 @@ namespace AdvInCRUD
             // phonetxtbox
             // 
             this.phonetxtbox.Location = new System.Drawing.Point(86, 521);
-            this.phonetxtbox.Margin = new System.Windows.Forms.Padding(2);
+            this.phonetxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.phonetxtbox.Name = "phonetxtbox";
             this.phonetxtbox.Size = new System.Drawing.Size(157, 20);
             this.phonetxtbox.TabIndex = 19;
@@ -285,7 +295,7 @@ namespace AdvInCRUD
             // emailtxtbox
             // 
             this.emailtxtbox.Location = new System.Drawing.Point(86, 503);
-            this.emailtxtbox.Margin = new System.Windows.Forms.Padding(2);
+            this.emailtxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.emailtxtbox.Name = "emailtxtbox";
             this.emailtxtbox.Size = new System.Drawing.Size(157, 20);
             this.emailtxtbox.TabIndex = 17;
@@ -303,7 +313,7 @@ namespace AdvInCRUD
             // searchtxtbox
             // 
             this.searchtxtbox.Location = new System.Drawing.Point(801, 394);
-            this.searchtxtbox.Margin = new System.Windows.Forms.Padding(2);
+            this.searchtxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchtxtbox.Name = "searchtxtbox";
             this.searchtxtbox.Size = new System.Drawing.Size(181, 20);
             this.searchtxtbox.TabIndex = 20;
@@ -312,7 +322,7 @@ namespace AdvInCRUD
             // 
             this.searchbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.searchbtn.Location = new System.Drawing.Point(739, 394);
-            this.searchbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.searchbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchbtn.Name = "searchbtn";
             this.searchbtn.Size = new System.Drawing.Size(58, 22);
             this.searchbtn.TabIndex = 21;
@@ -323,36 +333,14 @@ namespace AdvInCRUD
             // gotoproductbtn
             // 
             this.gotoproductbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.gotoproductbtn.Location = new System.Drawing.Point(892, 521);
-            this.gotoproductbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.gotoproductbtn.Location = new System.Drawing.Point(892, 466);
+            this.gotoproductbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gotoproductbtn.Name = "gotoproductbtn";
             this.gotoproductbtn.Size = new System.Drawing.Size(90, 41);
             this.gotoproductbtn.TabIndex = 22;
             this.gotoproductbtn.Text = "Products";
             this.gotoproductbtn.UseVisualStyleBackColor = true;
             this.gotoproductbtn.Click += new System.EventHandler(this.gotoproductbtn_Click);
-            // 
-            // gotocustomeraddressbtn
-            // 
-            this.gotocustomeraddressbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.gotocustomeraddressbtn.Location = new System.Drawing.Point(828, 422);
-            this.gotocustomeraddressbtn.Margin = new System.Windows.Forms.Padding(2);
-            this.gotocustomeraddressbtn.Name = "gotocustomeraddressbtn";
-            this.gotocustomeraddressbtn.Size = new System.Drawing.Size(60, 41);
-            this.gotocustomeraddressbtn.TabIndex = 23;
-            this.gotocustomeraddressbtn.Text = "Customer Address";
-            this.gotocustomeraddressbtn.UseVisualStyleBackColor = true;
-            // 
-            // gotoCustomerSalesbtn
-            // 
-            this.gotoCustomerSalesbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.gotoCustomerSalesbtn.Location = new System.Drawing.Point(892, 422);
-            this.gotoCustomerSalesbtn.Margin = new System.Windows.Forms.Padding(2);
-            this.gotoCustomerSalesbtn.Name = "gotoCustomerSalesbtn";
-            this.gotoCustomerSalesbtn.Size = new System.Drawing.Size(59, 41);
-            this.gotoCustomerSalesbtn.TabIndex = 24;
-            this.gotoCustomerSalesbtn.Text = "Customer Sales";
-            this.gotoCustomerSalesbtn.UseVisualStyleBackColor = true;
             // 
             // customerTableAdapter
             // 
@@ -361,7 +349,7 @@ namespace AdvInCRUD
             // SalesPersontxtbox
             // 
             this.SalesPersontxtbox.Location = new System.Drawing.Point(86, 540);
-            this.SalesPersontxtbox.Margin = new System.Windows.Forms.Padding(2);
+            this.SalesPersontxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SalesPersontxtbox.Name = "SalesPersontxtbox";
             this.SalesPersontxtbox.Size = new System.Drawing.Size(157, 20);
             this.SalesPersontxtbox.TabIndex = 26;
@@ -376,6 +364,20 @@ namespace AdvInCRUD
             this.SalesPersonlbl.TabIndex = 25;
             this.SalesPersonlbl.Text = "Sales Person";
             // 
+            // instructionlbl
+            // 
+            this.instructionlbl.Location = new System.Drawing.Point(336, 399);
+            this.instructionlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.instructionlbl.Name = "instructionlbl";
+            this.instructionlbl.Size = new System.Drawing.Size(168, 51);
+            this.instructionlbl.TabIndex = 27;
+            this.instructionlbl.Text = "Edit the table directly for CRUD operations then refresh, or use the text boxes b" +
+    "elow";
+            // 
+            // getAllCustomersTableAdapter
+            // 
+            this.getAllCustomersTableAdapter.ClearBeforeFill = true;
+            // 
             // txtid
             // 
             this.txtid.DataPropertyName = "CustomerID";
@@ -385,15 +387,6 @@ namespace AdvInCRUD
             this.txtid.ReadOnly = true;
             this.txtid.Visible = false;
             this.txtid.Width = 200;
-            // 
-            // nameStyleDataGridViewCheckBoxColumn
-            // 
-            this.nameStyleDataGridViewCheckBoxColumn.DataPropertyName = "NameStyle";
-            this.nameStyleDataGridViewCheckBoxColumn.HeaderText = "NameStyle";
-            this.nameStyleDataGridViewCheckBoxColumn.MinimumWidth = 10;
-            this.nameStyleDataGridViewCheckBoxColumn.Name = "nameStyleDataGridViewCheckBoxColumn";
-            this.nameStyleDataGridViewCheckBoxColumn.Visible = false;
-            this.nameStyleDataGridViewCheckBoxColumn.Width = 200;
             // 
             // txttitle
             // 
@@ -467,50 +460,88 @@ namespace AdvInCRUD
             this.txtphone.Name = "txtphone";
             this.txtphone.Width = 200;
             // 
-            // passwordHashDataGridViewTextBoxColumn
-            // 
-            this.passwordHashDataGridViewTextBoxColumn.DataPropertyName = "PasswordHash";
-            this.passwordHashDataGridViewTextBoxColumn.HeaderText = "PasswordHash";
-            this.passwordHashDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.passwordHashDataGridViewTextBoxColumn.Name = "passwordHashDataGridViewTextBoxColumn";
-            this.passwordHashDataGridViewTextBoxColumn.Visible = false;
-            this.passwordHashDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // passwordSaltDataGridViewTextBoxColumn
-            // 
-            this.passwordSaltDataGridViewTextBoxColumn.DataPropertyName = "PasswordSalt";
-            this.passwordSaltDataGridViewTextBoxColumn.HeaderText = "PasswordSalt";
-            this.passwordSaltDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.passwordSaltDataGridViewTextBoxColumn.Name = "passwordSaltDataGridViewTextBoxColumn";
-            this.passwordSaltDataGridViewTextBoxColumn.Visible = false;
-            this.passwordSaltDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // rowguidDataGridViewTextBoxColumn
-            // 
-            this.rowguidDataGridViewTextBoxColumn.DataPropertyName = "rowguid";
-            this.rowguidDataGridViewTextBoxColumn.HeaderText = "rowguid";
-            this.rowguidDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.rowguidDataGridViewTextBoxColumn.Name = "rowguidDataGridViewTextBoxColumn";
-            this.rowguidDataGridViewTextBoxColumn.Visible = false;
-            this.rowguidDataGridViewTextBoxColumn.Width = 200;
-            // 
             // modifiedDateDataGridViewTextBoxColumn
             // 
             this.modifiedDateDataGridViewTextBoxColumn.DataPropertyName = "ModifiedDate";
             this.modifiedDateDataGridViewTextBoxColumn.HeaderText = "ModifiedDate";
             this.modifiedDateDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.modifiedDateDataGridViewTextBoxColumn.Name = "modifiedDateDataGridViewTextBoxColumn";
+            this.modifiedDateDataGridViewTextBoxColumn.ReadOnly = true;
             this.modifiedDateDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // txtaddressid
+            // 
+            this.txtaddressid.DataPropertyName = "AddressID";
+            this.txtaddressid.HeaderText = "Address ID";
+            this.txtaddressid.MinimumWidth = 10;
+            this.txtaddressid.Name = "txtaddressid";
+            this.txtaddressid.Visible = false;
+            this.txtaddressid.Width = 200;
+            // 
+            // txtaddresstype
+            // 
+            this.txtaddresstype.DataPropertyName = "AddressType";
+            this.txtaddresstype.HeaderText = "Address Type";
+            this.txtaddresstype.MinimumWidth = 10;
+            this.txtaddresstype.Name = "txtaddresstype";
+            this.txtaddresstype.Width = 200;
+            // 
+            // txtaddressline1
+            // 
+            this.txtaddressline1.DataPropertyName = "AddressLine1";
+            this.txtaddressline1.HeaderText = "Address Line 1";
+            this.txtaddressline1.MinimumWidth = 10;
+            this.txtaddressline1.Name = "txtaddressline1";
+            this.txtaddressline1.Width = 200;
+            // 
+            // txtaddressline2
+            // 
+            this.txtaddressline2.DataPropertyName = "AddressLine2";
+            this.txtaddressline2.HeaderText = "Address Line 2";
+            this.txtaddressline2.MinimumWidth = 10;
+            this.txtaddressline2.Name = "txtaddressline2";
+            this.txtaddressline2.Width = 200;
+            // 
+            // txtcity
+            // 
+            this.txtcity.DataPropertyName = "City";
+            this.txtcity.HeaderText = "City";
+            this.txtcity.MinimumWidth = 10;
+            this.txtcity.Name = "txtcity";
+            this.txtcity.Width = 200;
+            // 
+            // txtstateprovince
+            // 
+            this.txtstateprovince.DataPropertyName = "StateProvince";
+            this.txtstateprovince.HeaderText = "State Province";
+            this.txtstateprovince.MinimumWidth = 10;
+            this.txtstateprovince.Name = "txtstateprovince";
+            this.txtstateprovince.Width = 200;
+            // 
+            // txtcountryregion
+            // 
+            this.txtcountryregion.DataPropertyName = "CountryRegion";
+            this.txtcountryregion.HeaderText = "Country Region";
+            this.txtcountryregion.MinimumWidth = 10;
+            this.txtcountryregion.Name = "txtcountryregion";
+            this.txtcountryregion.Width = 200;
+            // 
+            // txtpostalcode
+            // 
+            this.txtpostalcode.DataPropertyName = "PostalCode";
+            this.txtpostalcode.HeaderText = "Postal Code";
+            this.txtpostalcode.MinimumWidth = 10;
+            this.txtpostalcode.Name = "txtpostalcode";
+            this.txtpostalcode.Width = 200;
             // 
             // Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 580);
+            this.ClientSize = new System.Drawing.Size(1002, 580);
+            this.Controls.Add(this.instructionlbl);
             this.Controls.Add(this.SalesPersontxtbox);
             this.Controls.Add(this.SalesPersonlbl);
-            this.Controls.Add(this.gotoCustomerSalesbtn);
-            this.Controls.Add(this.gotocustomeraddressbtn);
             this.Controls.Add(this.gotoproductbtn);
             this.Controls.Add(this.searchbtn);
             this.Controls.Add(this.searchtxtbox);
@@ -525,7 +556,6 @@ namespace AdvInCRUD
             this.Controls.Add(this.titletxtbox);
             this.Controls.Add(this.Titlelbl);
             this.Controls.Add(this.refreshbtn);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.middletxtbox);
             this.Controls.Add(this.MiddleNamelbl);
@@ -534,11 +564,13 @@ namespace AdvInCRUD
             this.Controls.Add(this.firsttxtbox);
             this.Controls.Add(this.FirstNamelbl);
             this.Controls.Add(this.customergrid);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Customers";
             this.Text = "AdventureWorks Data";
             this.Load += new System.EventHandler(this.Customers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.customergrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getAllCustomersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adventureWorksLT2017DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.adventureWorksLT2017DataSet)).EndInit();
             this.ResumeLayout(false);
@@ -556,7 +588,6 @@ namespace AdvInCRUD
         private System.Windows.Forms.TextBox middletxtbox;
         private System.Windows.Forms.Label MiddleNamelbl;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button refreshbtn;
         private System.Windows.Forms.TextBox companytxtbox;
         private System.Windows.Forms.Label Companylbl;
@@ -571,15 +602,16 @@ namespace AdvInCRUD
         private System.Windows.Forms.TextBox searchtxtbox;
         private System.Windows.Forms.Button searchbtn;
         private System.Windows.Forms.Button gotoproductbtn;
-        private System.Windows.Forms.Button gotocustomeraddressbtn;
-        private System.Windows.Forms.Button gotoCustomerSalesbtn;
         private AdventureWorksLT2017DataSet adventureWorksLT2017DataSet;
         private System.Windows.Forms.BindingSource customerBindingSource;
         private AdventureWorksLT2017DataSetTableAdapters.CustomerTableAdapter customerTableAdapter;
         private System.Windows.Forms.TextBox SalesPersontxtbox;
         private System.Windows.Forms.Label SalesPersonlbl;
+        private System.Windows.Forms.Label instructionlbl;
+        private AdventureWorksLT2017DataSet1 adventureWorksLT2017DataSet1;
+        private System.Windows.Forms.BindingSource getAllCustomersBindingSource;
+        private AdventureWorksLT2017DataSet1TableAdapters.getAllCustomersTableAdapter getAllCustomersTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtid;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn nameStyleDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn txttitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtfirst;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtmiddle;
@@ -589,10 +621,15 @@ namespace AdvInCRUD
         private System.Windows.Forms.DataGridViewTextBoxColumn txtsalesperson;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtemail;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtphone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordHashDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordSaltDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rowguidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtaddressid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtaddresstype;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtaddressline1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtaddressline2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtcity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtstateprovince;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtcountryregion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtpostalcode;
     }
 }
 

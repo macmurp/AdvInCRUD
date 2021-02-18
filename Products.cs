@@ -21,8 +21,8 @@ namespace AdvInCRUD
 
         private void Products_Load(object sender, EventArgs e)
         {
+            //this.getAllProductsTableAdapter.Fill(this.adventureWorksLT2017DataSet2.getAllProducts);
             //initial load
-            //this.productTableAdapter.Fill(this.adventureWorksLT2017DataSet.Product);
             getData();
 
         }
