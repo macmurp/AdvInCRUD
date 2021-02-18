@@ -79,97 +79,63 @@ namespace AdvInCRUD
 
         private void customergrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if(customergrid.CurrentRow != null)
-            {
-                try
-                {
-                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString()))
-                    {
-                        conn.Open();
-                        DataGridViewRow drow = customergrid.CurrentRow;
-                        SqlCommand cmd = new SqlCommand("UpdateCustomer", conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        if (drow.Cells["txtid"].Value == DBNull.Value)
-                        {
-                            //if the id of the current row being edited is null, that means you are adding a new row
-                            //make a new ID instead
-                            //logic inside the stored procedure will see this and know it is an insert
-                            cmd.Parameters.AddWithValue("@CustomerID", 0);
-                            cmd.Parameters.AddWithValue("@AddressID", 0);
-                        }
-                        else
-                        {
-                            //if editing a row, id of current row will be used
-                            //logic inside the stored procedure will see this and know it is an update
-                            cmd.Parameters.AddWithValue("@CustomerID", Convert.ToInt32(drow.Cells["txtid"].Value));
-                            cmd.Parameters.AddWithValue("@AddressID", Convert.ToInt32(drow.Cells["txtaddressid"].Value));
+            //if(customergrid.CurrentRow != null)
+            //{
+                //try
+                //{
+                //    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString()))
+                //    {
+                //        conn.Open();
+                //        DataGridViewRow drow = customergrid.CurrentRow;
+                //        SqlCommand cmd = new SqlCommand("UpdateCustomer", conn);
+                //        cmd.CommandType = CommandType.StoredProcedure;
+                //        if (drow.Cells["txtid"].Value == DBNull.Value)
+                //        {
+                //            //if the id of the current row being edited is null, that means you are adding a new row
+                //            //make a new ID instead
+                //            //logic inside the stored procedure will see this and know it is an insert
+                //            cmd.Parameters.AddWithValue("@CustomerID", 0);
+                //            cmd.Parameters.AddWithValue("@AddressID", 0);
+                //        }
+                //        else
+                //        {
+                //            //if editing a row, id of current row will be used
+                //            //logic inside the stored procedure will see this and know it is an update
+                //            cmd.Parameters.AddWithValue("@CustomerID", Convert.ToInt32(drow.Cells["txtid"].Value));
+                //            cmd.Parameters.AddWithValue("@AddressID", Convert.ToInt32(drow.Cells["txtaddressid"].Value));
 
-                        }
-                        //if value of cell is null, pass empty string
-                        cmd.Parameters.AddWithValue("@Title", drow.Cells["txttitle"].Value == DBNull.Value ? "" : drow.Cells["txttitle"].Value);
-                        cmd.Parameters.AddWithValue("@FirstName", drow.Cells["txtfirst"].Value == DBNull.Value ? "" : drow.Cells["txtfirst"].Value);
-                        cmd.Parameters.AddWithValue("@LastName", drow.Cells["txtlast"].Value == DBNull.Value ? "" : drow.Cells["txtlast"].Value);
-                        cmd.Parameters.AddWithValue("@MiddleName", drow.Cells["txtmiddle"].Value == DBNull.Value ? "" : drow.Cells["txtmiddle"].Value);
-                        cmd.Parameters.AddWithValue("@Suffix", drow.Cells["txtsuffix"].Value == DBNull.Value ? "" : drow.Cells["txtsuffix"].Value);
-                        cmd.Parameters.AddWithValue("@CompanyName", drow.Cells["txtcompany"].Value == DBNull.Value ? "" : drow.Cells["txtcompany"].Value);
-                        cmd.Parameters.AddWithValue("@EmailAddress", drow.Cells["txtemail"].Value == DBNull.Value ? "" : drow.Cells["txtemail"].Value);
-                        cmd.Parameters.AddWithValue("@Phone", drow.Cells["txtphone"].Value == DBNull.Value ? "" : drow.Cells["txtphone"].Value);
-                        cmd.Parameters.AddWithValue("@SalesPerson", drow.Cells["txtsalesperson"].Value == DBNull.Value ? "" : drow.Cells["txtsalesperson"].Value);
-                        cmd.Parameters.AddWithValue("@PasswordHash", 0);
-                        cmd.Parameters.AddWithValue("@PasswordSalt", 0);
+                //        }
+                //        //if value of cell is null, pass empty string
+                //        cmd.Parameters.AddWithValue("@Title", drow.Cells["txttitle"].Value == DBNull.Value ? "" : drow.Cells["txttitle"].Value);
+                //        cmd.Parameters.AddWithValue("@FirstName", drow.Cells["txtfirst"].Value == DBNull.Value ? "" : drow.Cells["txtfirst"].Value);
+                //        cmd.Parameters.AddWithValue("@LastName", drow.Cells["txtlast"].Value == DBNull.Value ? "" : drow.Cells["txtlast"].Value);
+                //        cmd.Parameters.AddWithValue("@MiddleName", drow.Cells["txtmiddle"].Value == DBNull.Value ? "" : drow.Cells["txtmiddle"].Value);
+                //        cmd.Parameters.AddWithValue("@Suffix", drow.Cells["txtsuffix"].Value == DBNull.Value ? "" : drow.Cells["txtsuffix"].Value);
+                //        cmd.Parameters.AddWithValue("@CompanyName", drow.Cells["txtcompany"].Value == DBNull.Value ? "" : drow.Cells["txtcompany"].Value);
+                //        cmd.Parameters.AddWithValue("@EmailAddress", drow.Cells["txtemail"].Value == DBNull.Value ? "" : drow.Cells["txtemail"].Value);
+                //        cmd.Parameters.AddWithValue("@Phone", drow.Cells["txtphone"].Value == DBNull.Value ? "" : drow.Cells["txtphone"].Value);
+                //        cmd.Parameters.AddWithValue("@SalesPerson", drow.Cells["txtsalesperson"].Value == DBNull.Value ? "" : drow.Cells["txtsalesperson"].Value);
+                //        cmd.Parameters.AddWithValue("@PasswordHash", 0);
+                //        cmd.Parameters.AddWithValue("@PasswordSalt", 0);
 
-                        cmd.Parameters.AddWithValue("@AddressType", drow.Cells["txtaddresstype"].Value == DBNull.Value ? "" : drow.Cells["txtaddresstype"].Value);
-                        cmd.Parameters.AddWithValue("@AddressLine1", drow.Cells["txtaddressline1"].Value == DBNull.Value ? "" : drow.Cells["txtaddressline1"].Value);
-                        cmd.Parameters.AddWithValue("@AddressLine2", drow.Cells["txtaddressline2"].Value == DBNull.Value ? "" : drow.Cells["txtaddressline2"].Value);
-                        cmd.Parameters.AddWithValue("@City", drow.Cells["txtcity"].Value == DBNull.Value ? "" : drow.Cells["txtcity"].Value);
-                        cmd.Parameters.AddWithValue("@StateProvince", drow.Cells["txtstateprovince"].Value == DBNull.Value ? "" : drow.Cells["txtstateprovince"].Value);
-                        cmd.Parameters.AddWithValue("@CountryRegion", drow.Cells["txtcountryregion"].Value == DBNull.Value ? "" : drow.Cells["txtcountryregion"].Value);
-                        cmd.Parameters.AddWithValue("@PostalCode", drow.Cells["txtpostalcode"].Value == DBNull.Value ? "" : drow.Cells["txtpostalcode"].Value);
+                //        cmd.Parameters.AddWithValue("@AddressType", drow.Cells["txtaddresstype"].Value == DBNull.Value ? "" : drow.Cells["txtaddresstype"].Value);
+                //        cmd.Parameters.AddWithValue("@AddressLine1", drow.Cells["txtaddressline1"].Value == DBNull.Value ? "" : drow.Cells["txtaddressline1"].Value);
+                //        cmd.Parameters.AddWithValue("@AddressLine2", drow.Cells["txtaddressline2"].Value == DBNull.Value ? "" : drow.Cells["txtaddressline2"].Value);
+                //        cmd.Parameters.AddWithValue("@City", drow.Cells["txtcity"].Value == DBNull.Value ? "" : drow.Cells["txtcity"].Value);
+                //        cmd.Parameters.AddWithValue("@StateProvince", drow.Cells["txtstateprovince"].Value == DBNull.Value ? "" : drow.Cells["txtstateprovince"].Value);
+                //        cmd.Parameters.AddWithValue("@CountryRegion", drow.Cells["txtcountryregion"].Value == DBNull.Value ? "" : drow.Cells["txtcountryregion"].Value);
+                //        cmd.Parameters.AddWithValue("@PostalCode", drow.Cells["txtpostalcode"].Value == DBNull.Value ? "" : drow.Cells["txtpostalcode"].Value);
 
-                        cmd.ExecuteNonQuery();
-                    }
-                    //need to press refresh to see results
-                    //change to update button later?
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error");
-                }
-            }
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            //add button for text box entries, also works
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString()))
-                {
-                    SqlCommand acmd = new SqlCommand("AddCustomer", conn);
-                    acmd.CommandType = CommandType.StoredProcedure;
-                    acmd.Parameters.AddWithValue("@CustomerID", 0);
-                    acmd.Parameters.AddWithValue("@Title", titletxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@FirstName", firsttxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@LastName", lasttxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@MiddleName", middletxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@Suffix", suffixtxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@CompanyName", companytxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@EmailAddress", emailtxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@Phone", phonetxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@SalesPerson", SalesPersontxtbox.Text.Trim());
-                    acmd.Parameters.AddWithValue("@PasswordHash", 0);
-                    acmd.Parameters.AddWithValue("@PasswordSalt", 0);
-                    conn.Open();
-                    acmd.ExecuteNonQuery();
-                    conn.Close();
-                    MessageBox.Show("Added a new customer!");
-                }
-                getData();
-            }
-            catch (Exception ex)
-            {         
-                MessageBox.Show(ex.Message, "Error");
-            }
+                //        cmd.ExecuteNonQuery();
+                //    }
+                //    //need to press refresh to see results
+                //    //change to update button later?
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message, "Error");
+                //}
+            //}
         }
 
         private void customergrid_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -185,6 +151,7 @@ namespace AdvInCRUD
                         cmd.CommandType = CommandType.StoredProcedure;
                         conn.Open();
                         cmd.Parameters.AddWithValue("@CustomerID", Convert.ToInt32(customergrid.CurrentRow.Cells["txtid"].Value));
+                        cmd.Parameters.AddWithValue("@AddressID", Convert.ToInt32(customergrid.CurrentRow.Cells["txtaddressid"].Value));
                         cmd.ExecuteNonQuery();
                         conn.Close();
                     }
@@ -199,6 +166,68 @@ namespace AdvInCRUD
             {
                 e.Cancel = true;
             }
+        }
+
+        private void insertbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString()))
+                {
+                    conn.Open();
+                    DataGridViewRow drow = customergrid.CurrentRow;
+                    SqlCommand cmd = new SqlCommand("UpdateCustomer", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (drow.Cells["txtid"].Value == DBNull.Value)
+                    {
+                        //if the id of the current row being edited is null, that means you are adding a new row
+                        //make a new ID instead
+                        //logic inside the stored procedure will see this and know it is an insert
+                        cmd.Parameters.AddWithValue("@CustomerID", 0);
+                        cmd.Parameters.AddWithValue("@AddressID", 0);
+                    }
+                    else
+                    {
+                        //if editing a row, id of current row will be used
+                        //logic inside the stored procedure will see this and know it is an update
+                        cmd.Parameters.AddWithValue("@CustomerID", Convert.ToInt32(drow.Cells["txtid"].Value));
+                        cmd.Parameters.AddWithValue("@AddressID", Convert.ToInt32(drow.Cells["txtaddressid"].Value));
+
+                    }
+
+                    //drow.Cells["txtlast"].Value == DBNull.Value ? "" : 
+                    cmd.Parameters.AddWithValue("@Title", drow.Cells["txttitle"].Value);
+                    cmd.Parameters.AddWithValue("@FirstName", drow.Cells["txtfirst"].Value);
+                    cmd.Parameters.AddWithValue("@LastName", drow.Cells["txtlast"].Value);
+                    cmd.Parameters.AddWithValue("@MiddleName", drow.Cells["txtmiddle"].Value);
+                    cmd.Parameters.AddWithValue("@Suffix", drow.Cells["txtsuffix"].Value);
+                    cmd.Parameters.AddWithValue("@CompanyName", drow.Cells["txtcompany"].Value);
+                    cmd.Parameters.AddWithValue("@EmailAddress", drow.Cells["txtemail"].Value);
+                    cmd.Parameters.AddWithValue("@Phone", drow.Cells["txtphone"].Value);
+                    cmd.Parameters.AddWithValue("@SalesPerson", drow.Cells["txtsalesperson"].Value);
+                    cmd.Parameters.AddWithValue("@PasswordHash", 0);
+                    cmd.Parameters.AddWithValue("@PasswordSalt", 0);
+
+                    cmd.Parameters.AddWithValue("@AddressType", drow.Cells["txtaddresstype"].Value);
+                    cmd.Parameters.AddWithValue("@AddressLine1", drow.Cells["txtaddressline1"].Value);
+                    cmd.Parameters.AddWithValue("@AddressLine2", drow.Cells["txtaddressline2"].Value);
+                    cmd.Parameters.AddWithValue("@City", drow.Cells["txtcity"].Value);
+                    cmd.Parameters.AddWithValue("@StateProvince", drow.Cells["txtstateprovince"].Value);
+                    cmd.Parameters.AddWithValue("@CountryRegion", drow.Cells["txtcountryregion"].Value);
+                    cmd.Parameters.AddWithValue("@PostalCode", drow.Cells["txtpostalcode"].Value);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+        private void Customers_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

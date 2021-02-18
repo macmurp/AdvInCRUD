@@ -206,7 +206,7 @@ namespace AdvInCRUD
             // gotocustomersbtn
             // 
             this.gotocustomersbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.gotocustomersbtn.Location = new System.Drawing.Point(24, 500);
+            this.gotocustomersbtn.Location = new System.Drawing.Point(28, 500);
             this.gotocustomersbtn.Margin = new System.Windows.Forms.Padding(2);
             this.gotocustomersbtn.Name = "gotocustomersbtn";
             this.gotocustomersbtn.Size = new System.Drawing.Size(95, 41);
@@ -655,6 +655,7 @@ namespace AdvInCRUD
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Products";
             this.Text = "Products";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Products_FormClosing);
             this.Load += new System.EventHandler(this.Products_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productgrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.getAllProductsBindingSource)).EndInit();

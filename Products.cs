@@ -65,5 +65,10 @@ namespace AdvInCRUD
             c.Show();
             this.Close();
         }
+
+        private void Products_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
     }
 }
